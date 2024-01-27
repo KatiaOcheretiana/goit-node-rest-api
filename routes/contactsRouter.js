@@ -6,15 +6,15 @@ const {
   createContact,
   updateContact,
   updateFavorite,
-} = require("../controllers/contactsControllers.js");
+} = require("../controllers");
 
-const { validateBody, ctrlWrapper, isValidId } = require("../helpers");
+const { validateBody, isValidId } = require("../helpers");
 
 const {
   createContactSchema,
   updateContactSchema,
   updateFavoriteSchema,
-} = require("../schemas/contactsSchemas.js");
+} = require("../schemas");
 
 const contactsRouter = express.Router();
 
