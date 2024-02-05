@@ -6,7 +6,12 @@ require("dotenv").config();
 const { SECRET_KEY } = process.env;
 
 const authentificate = async (req, res, next) => {
-  const { authorization = "" } = req.headers;
+  const { authorization } = req.headers;
+
+  if (!authorization) {
+    next(HttpError(401));
+  }
+
   const [bearer, token] = authorization.split(" ");
 
   if (bearer !== "Bearer") {
@@ -15,7 +20,7 @@ const authentificate = async (req, res, next) => {
   try {
     const { id } = jwt.verify(token, SECRET_KEY);
     const user = await User.findById(id);
-    if (!user || !user.token || user.token !== token) {
+    if (!user.token) {
       next(HttpError(401, "Not authorized"));
     }
     req.user = user;
