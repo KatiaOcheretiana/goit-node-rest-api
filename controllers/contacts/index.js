@@ -1,4 +1,4 @@
-const { ctrlWrapper } = require("../helpers/index.js");
+const { ctrlWrapper } = require("../../helpers/index.js");
 const getAllContacts = require("./getAllContacts.js");
 const getOneContact = require("./getOneContact.js");
 const deleteContact = require("./deleteContact.js");

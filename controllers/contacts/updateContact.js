@@ -1,6 +1,6 @@
-const Contact = require("../db/models");
+const { Contact } = require("../../db/models");
 
-const { HttpError } = require("../helpers");
+const { HttpError } = require("../../helpers");
 
 const updateContact = async (req, res, next) => {
   if (Object.keys(req.body).length === 0) {
