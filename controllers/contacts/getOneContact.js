@@ -1,6 +1,6 @@
-const Contact = require("../db/models");
+const { Contact } = require("../../db/models");
 
-const { HttpError } = require("../helpers");
+const { HttpError } = require("../../helpers");
 
 const getOneContact = async (req, res) => {
   const { id } = req.params;
