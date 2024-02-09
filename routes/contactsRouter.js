@@ -10,7 +10,7 @@ const {
 
 const { validateBody, isValidId } = require("../helpers");
 
-const authentificate = require("../middleware");
+const { authentificate } = require("../middleware");
 
 const {
   createContactSchema,
