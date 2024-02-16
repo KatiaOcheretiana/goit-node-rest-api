@@ -1,12 +1,14 @@
 const express = require("express");
 const { validateBody } = require("../helpers");
-const { registerSchema, loginSchema } = require("../schemas");
+const { registerSchema, loginSchema, emailSchema } = require("../schemas");
 const {
   register,
   login,
   getCurrent,
   logout,
   changeAvatar,
+  verifyEmail,
+  resendVerify,
 } = require("../controllers/users");
 
 const { authentificate, upload } = require("../middleware/index");
@@ -27,5 +29,9 @@ usersRouter.patch(
   upload.single("avatar"),
   changeAvatar
 );
+
+usersRouter.get("/verify/:verificationToken", verifyEmail);
+
+usersRouter.post("/verify", validateBody(emailSchema), resendVerify);
 
 module.exports = usersRouter;
